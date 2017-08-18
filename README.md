@@ -31,9 +31,7 @@ Table's current state:
     --------------------------
 
     [2, 2, 2,
-
      2, 2, 2,
-
      2, 2, 2]
 	   ^
     Empty Table.
@@ -42,7 +40,7 @@ The previous grid is the backend for the game, and the input for the neural netw
 
 #### - Neural Network:
 	
-####Layers:
+#### Layers:
 
     Input	Layer:	 9 nodes
     -
@@ -54,7 +52,7 @@ The previous grid is the backend for the game, and the input for the neural netw
     -
     Output	Layer:	 1 nodes
 
-####Weights:
+#### Weights:
 
 		Input	-> 	First : ((9+1) x 18) 180
 		-
@@ -71,11 +69,11 @@ Weights are stored in a numpy array, with the format:
 
 Every weight at the begining has random a value between -1 and 1.
 
-####Activation Function:
+#### Activation Function:
 
 For the input, it's linear. For the hidden layers, sigmoidal. For the output, linear[?] (0...8)
 
-####Guess:
+#### Guess:
 
 > So... this part depends on the type of neural network I'm gonna use.
 Since my current choice is a feed-forward network, the guessing step is made as follows:
@@ -86,7 +84,7 @@ every node in the first layer calculates its result summing up the inputs times 
 pass through the activation function and go through their connections to the next layer, repeating 
 the process until reaching the output layer, which returns one of the posible positions in the grid.
 
-####Train:
+#### Train:
 
 This is where things get complicated for me, because there's not much of a score in the game to be
 returning as feedback for the network. There are many ways it could go, and setting in code which 
@@ -97,16 +95,16 @@ So, since I can't set a score reference for every move made by the network, thus
 what its error is, the training will be made in the Genetic Algorithm.
 
 
-###Genetic Algorithm
+### Genetic Algorithm
 
-###Subject:
+### Subject:
 
 The population for this GA will be a list of 50 Subjects.
 
 A Subject contains a matrix of weights, the neural network that uses those weights to make a prediction,
 and a few functions to handle the actions of the neural network and the score calculations for the GA.
 
-####Some of the functions are:
+#### Some of the functions are:
 
 + <b>Move:</b>
 Calls the neural networks guess functions, and returns its result.
@@ -122,7 +120,7 @@ Calls the neural networks guess functions, and returns its result.
 				Copies its weights into a new matrix, passes it to the mutation, creates a new Subject with
 				those genes and returns the new subject.
 
-####Main Process:
+#### Main Process:
 
 Having a starting population of 50 random subjects, the selection process consists in...
 
